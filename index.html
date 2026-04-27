@@ -119,6 +119,20 @@ footer {
   opacity: 0.4;
   font-size: 12px;
 }
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
 </style>
 </head>
 
@@ -142,14 +156,15 @@ footer {
 <section id="music">
   <h1>music</h1>
 
-  <!-- Spotify playlist (replace link later) -->
-  <iframe style="border-radius:12px"
-  src="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?si=49df2f8b5a354c59"
-  height="380" frameborder="0"
-  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-  </iframe>
-</section>
+  <p>listen to the latest SWC playlist</p>
 
+  <a 
+    href="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?utm_source=generator" 
+    target="_blank" 
+    class="btn">
+    open spotify
+  </a>
+</section>
 <!-- MERCH -->
 <section id="merch">
   <h1>merch</h1>
