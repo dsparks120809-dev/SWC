@@ -8,11 +8,10 @@
 <style>
 body {
   margin: 0;
-  background: #0a0a0a;
+  background: #0b0b0b;
   color: white;
   font-family: Arial, sans-serif;
   cursor: none;
-  scroll-behavior: smooth;
 }
 
 /* cursor */
@@ -30,13 +29,13 @@ body {
 /* nav */
 nav {
   position: fixed;
-  top: 0;
   width: 100%;
+  top: 0;
   display: flex;
   justify-content: center;
   gap: 25px;
   padding: 15px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
 }
 
@@ -45,90 +44,77 @@ nav a {
   text-decoration: none;
   opacity: 0.6;
 }
+nav a:hover { opacity: 1; }
 
-nav a:hover {
-  opacity: 1;
-}
-
-/* sections */
-section {
-  min-height: 100vh;
+/* HERO */
+.hero {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 60px 20px;
 }
 
-h1 {
-  font-size: 60px;
-  margin: 0;
-  letter-spacing: 6px;
+.logo {
+  font-size: 80px;
+  letter-spacing: 10px;
+  font-weight: bold;
 }
 
-/* glitch */
-.glitch {
-  position: relative;
-}
-
-.glitch::before,
-.glitch::after {
-  content: "SWC";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-}
-
-.glitch::before {
-  color: red;
-  transform: translate(2px);
+.subtitle {
   opacity: 0.6;
+  margin-top: 10px;
 }
 
-.glitch::after {
-  color: cyan;
-  transform: translate(-2px);
-  opacity: 0.6;
+/* sections */
+section {
+  padding: 100px 20px;
+  text-align: center;
 }
 
-/* buttons */
-.btn {
-  margin-top: 20px;
-  padding: 10px 18px;
-  border: 1px solid white;
-  text-decoration: none;
-  color: white;
+/* merch grid */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.item {
+  background: #111;
+  border: 1px solid #222;
+  overflow: hidden;
   transition: 0.2s;
 }
 
-.btn:hover {
-  background: white;
-  color: black;
+.item:hover {
+  transform: scale(1.05);
+  border-color: white;
 }
 
-/* merch */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 120px);
-  gap: 12px;
+.item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
 }
 
-.box {
-  height: 120px;
-  border: 1px solid white;
-  opacity: 0.5;
+.item p {
+  margin: 10px;
+  font-size: 14px;
+  opacity: 0.8;
 }
 
 /* spotify */
 iframe {
   margin-top: 20px;
+  width: 80%;
 }
 
 /* footer */
 footer {
-  padding: 30px;
+  padding: 40px;
   text-align: center;
   opacity: 0.4;
   font-size: 12px;
@@ -142,62 +128,58 @@ footer {
 
 <nav>
   <a href="#home">home</a>
-  <a href="#bio">bio</a>
   <a href="#music">music</a>
   <a href="#merch">merch</a>
 </nav>
 
-<!-- HOME -->
-<section id="home">
-  <h1 class="glitch">SWC</h1>
-  <p>slit wrist county / underground collective</p>
-  <a class="btn" href="#music">enter</a>
-</section>
-
-<!-- BIO -->
-<section id="bio">
-  <h1>bio</h1>
-  <p>
-    skater / alt fashion / underground rap collective influenced by distortion, emotion, and street culture.
-  </p>
-</section>
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="logo">SWC</div>
+  <div class="subtitle">skater / alt / underground collective</div>
+</div>
 
 <!-- MUSIC -->
 <section id="music">
   <h1>music</h1>
 
-  <!-- SPOTIFY EMBED -->
+  <!-- Spotify playlist (replace link later) -->
   <iframe style="border-radius:12px"
-  src="https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT"
-  width="70%" height="152"
-  frameborder="0"
+  src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
+  height="380" frameborder="0"
   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
   </iframe>
-
-  <p>latest drop</p>
 </section>
 
 <!-- MERCH -->
 <section id="merch">
   <h1>merch</h1>
 
-  <div class="grid">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <div class="merch-grid">
+
+    <a class="item" href="#" target="_blank">
+      <img src="https://images.unsplash.com/photo-1520975922284-9a5f5d3f8c5b" />
+      <p>SWC tee</p>
+    </a>
+
+    <a class="item" href="#" target="_blank">
+      <img src="https://images.unsplash.com/photo-1520975958228-7c9a7f9b6f2a" />
+      <p>hoodie drop</p>
+    </a>
+
+    <a class="item" href="#" target="_blank">
+      <img src="https://images.unsplash.com/photo-1520975919793-7d6d3c9f8a1b" />
+      <p>skater cap</p>
+    </a>
+
   </div>
 </section>
 
 <footer>
-  dsparks120809-dev © SWC
+  SWC © underground label
 </footer>
 
 <script>
 const cursor = document.getElementById("cursor");
-
 document.addEventListener("mousemove", e => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY + "px";
