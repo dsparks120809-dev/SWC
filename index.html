@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SWC</title>
 
 <style>
-/* ===== BASE ===== */
 body {
   margin: 0;
   background: #0a0a0a;
@@ -16,44 +15,42 @@ body {
   scroll-behavior: smooth;
 }
 
-/* ===== CUSTOM CURSOR ===== */
+/* cursor */
 .cursor {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border: 1px solid white;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: transform 0.05s ease;
   z-index: 9999;
 }
 
-/* ===== NAV ===== */
+/* nav */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 20px;
+  gap: 25px;
+  padding: 15px;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
-  z-index: 1000;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 nav a:hover {
   opacity: 1;
 }
 
-/* ===== SECTIONS ===== */
+/* sections */
 section {
   min-height: 100vh;
   display: flex;
@@ -61,36 +58,16 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 80px 20px;
+  padding: 60px 20px;
 }
 
 h1 {
-  font-size: 70px;
+  font-size: 60px;
   margin: 0;
   letter-spacing: 6px;
 }
 
-p {
-  opacity: 0.7;
-  max-width: 600px;
-}
-
-/* ===== BUTTONS ===== */
-.btn {
-  margin-top: 20px;
-  padding: 10px 18px;
-  border: 1px solid white;
-  color: white;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  background: white;
-  color: black;
-}
-
-/* ===== GLITCH ===== */
+/* glitch */
 .glitch {
   position: relative;
 }
@@ -116,24 +93,45 @@ p {
   opacity: 0.6;
 }
 
-/* ===== MERCH GRID ===== */
+/* buttons */
+.btn {
+  margin-top: 20px;
+  padding: 10px 18px;
+  border: 1px solid white;
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+/* merch */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 150px);
-  gap: 15px;
+  grid-template-columns: repeat(3, 120px);
+  gap: 12px;
 }
 
 .box {
-  height: 150px;
+  height: 120px;
   border: 1px solid white;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
-/* ===== FOOTER ===== */
+/* spotify */
+iframe {
+  margin-top: 20px;
+}
+
+/* footer */
 footer {
-  padding: 40px;
+  padding: 30px;
   text-align: center;
   opacity: 0.4;
+  font-size: 12px;
 }
 </style>
 </head>
@@ -142,7 +140,6 @@ footer {
 
 <div class="cursor" id="cursor"></div>
 
-<!-- NAV -->
 <nav>
   <a href="#home">home</a>
   <a href="#bio">bio</a>
@@ -161,7 +158,7 @@ footer {
 <section id="bio">
   <h1>bio</h1>
   <p>
-    underground collective influenced by skater culture, alt fashion, distortion rap, and raw street energy.
+    skater / alt fashion / underground rap collective influenced by distortion, emotion, and street culture.
   </p>
 </section>
 
@@ -169,18 +166,21 @@ footer {
 <section id="music">
   <h1>music</h1>
 
-  <!-- SoundCloud Embed -->
-  <iframe width="70%" height="166" scrolling="no" frameborder="no"
-  allow="autoplay"
-  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/forss/flickermood">
+  <!-- SPOTIFY EMBED -->
+  <iframe style="border-radius:12px"
+  src="https://open.spotify.com/embed/track/4cOdK2wGLETKBW3PvgPWqT"
+  width="70%" height="152"
+  frameborder="0"
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
   </iframe>
 
-  <p>latest drop / preview</p>
+  <p>latest drop</p>
 </section>
 
 <!-- MERCH -->
 <section id="merch">
   <h1>merch</h1>
+
   <div class="grid">
     <div class="box"></div>
     <div class="box"></div>
@@ -195,7 +195,6 @@ footer {
   dsparks120809-dev © SWC
 </footer>
 
-<!-- CURSOR SCRIPT -->
 <script>
 const cursor = document.getElementById("cursor");
 
