@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Site</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      color: white;
+      font-family: Arial;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Website is Live</h1>
+</body>
+</html>
