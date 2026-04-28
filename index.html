@@ -8,73 +8,69 @@
 <style>
 
 /* base */
-
 html {
   scroll-behavior: smooth;
 }
 
+body {
+  margin: 0;
+  background: #020202;
+  color: white;
+  font-family: Arial, sans-serif;
+  cursor: none;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* deep black layers */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.03), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255,0,40,0.05), transparent 50%),
+    radial-gradient(circle at center, rgba(0,0,0,0.9), #000);
+  pointer-events: none;
+  z-index: -3;
+}
+
+/* cracked red bleed layer */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
 
   background:
-    /* jagged crack line */
     linear-gradient(115deg,
       transparent 0%,
       transparent 48%,
-      rgba(255,255,255,0.06) 49%,
+      rgba(255,255,255,0.05) 49%,
       rgba(255,255,255,0.02) 50%,
-      rgba(255,255,255,0.06) 51%,
-      transparent 52%,
-      transparent 100%
+      rgba(255,255,255,0.05) 51%,
+      transparent 52%
     ),
-
-    /* red seep */
     radial-gradient(circle at 52% 50%,
-      rgba(255, 0, 40, 0.18),
-      transparent 45%
-    ),
-
-    radial-gradient(circle at 48% 50%,
-      rgba(255, 0, 0, 0.10),
+      rgba(255, 0, 40, 0.22),
       transparent 55%
     );
 
-  opacity: 1;
+  mix-blend-mode: screen;
   pointer-events: none;
   z-index: -2;
 
-  mix-blend-mode: screen;
-
-  /* 👇 breathing animation */
-  animation: crackBreathe 6.5s ease-in-out infinite;
+  animation: crackBreathe 6s ease-in-out infinite;
 }
 
-/* breathing motion (subtle expand/shift) */
+/* breathing crack */
 @keyframes crackBreathe {
-  0% {
-    transform: scaleX(1) scaleY(1);
-    filter: blur(0px);
-  }
-
-  35% {
-    transform: scaleX(1.01) scaleY(1);
-    filter: blur(0.3px);
-  }
-
-  55% {
-    transform: scaleX(0.99) scaleY(1);
-    filter: blur(0.1px);
-  }
-
-  100% {
-    transform: scaleX(1) scaleY(1);
-    filter: blur(0px);
-  }
+  0%   { transform: scale(1); opacity: 0.9; }
+  35%  { transform: scale(1.01); opacity: 1; }
+  55%  { transform: scale(0.99); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 0.9; }
 }
-/* cursor */
 
+/* cursor */
 .cursor {
   width: 10px;
   height: 10px;
@@ -87,7 +83,6 @@ body::after {
 }
 
 /* nav */
-
 nav {
   position: fixed;
   width: 100%;
@@ -98,7 +93,6 @@ nav {
   padding: 15px;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
   z-index: 999;
 }
 
@@ -111,11 +105,9 @@ nav a {
 
 nav a:hover {
   opacity: 1;
-  text-shadow: 0 0 10px white;
 }
 
 /* hero */
-
 .hero {
   height: 100vh;
   display: flex;
@@ -123,86 +115,42 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
 }
 
 .glitch {
   font-size: 110px;
   font-weight: bold;
   letter-spacing: 12px;
-  text-transform: uppercase;
-  position: relative;
-  animation: breatheFlicker 4.8s infinite;
+  animation: glitchFlicker 3.5s infinite;
 }
 
-/* slow calm + sudden spikes */
-@keyframes breatheFlicker {
-  0%   { opacity: 1; transform: scale(1); }
-  20%  { opacity: 0.95; }
-  38%  { opacity: 1; }
-  
-  55%  { opacity: 0.7; transform: scale(1.01); }
-  57%  { opacity: 0.2; }
-  59%  { opacity: 1; transform: scale(1); }
-
-  75%  { opacity: 0.9; }
-  88%  { opacity: 1; }
-
+/* faster irregular flicker */
+@keyframes glitchFlicker {
+  0% { opacity: 1; }
+  7% { opacity: 0.7; }
+  9% { opacity: 1; }
+  33% { opacity: 0.9; }
+  34% { opacity: 0.4; }
+  36% { opacity: 1; }
+  62% { opacity: 1; }
+  63% { opacity: 0.6; }
+  66% { opacity: 1; }
   100% { opacity: 1; }
-}
-
-/* jitter layer (keeps randomness) */
-.glitch::before {
-  content: "SWC";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  color: white;
-  opacity: 0.3;
-  animation: microJitter 2.2s infinite;
-}
-
-@keyframes microJitter {
-  0%   { transform: translate(0, 0); }
-  10%  { transform: translate(-1px, 0); opacity: 0.5; }
-  25%  { transform: translate(1px, 0); opacity: 0.2; }
-  40%  { transform: translate(0, 0); }
-  60%  { transform: translate(-2px, 0); opacity: 0.4; }
-  80%  { transform: translate(1px, 0); opacity: 0.3; }
-  100% { transform: translate(0, 0); }
 }
 
 .subtitle {
   opacity: 0.6;
   margin-top: 15px;
   letter-spacing: 3px;
-  text-transform: lowercase;
 }
 
 /* sections */
-
 section {
   padding: 140px 20px;
   text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  animation: fadeUp 1s ease;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* grids */
-
+/* cards */
 .merch-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -211,14 +159,10 @@ section {
   margin: auto;
 }
 
-/* cards */
-
 .item {
   background: rgba(255,255,255,0.03);
   border: 1px solid #222;
-  overflow: hidden;
   transition: 0.3s;
-  backdrop-filter: blur(6px);
 }
 
 .item:hover {
@@ -238,8 +182,7 @@ section {
   opacity: 0.8;
 }
 
-/* buttons */
-
+/* button */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -248,45 +191,14 @@ section {
   color: white;
   text-decoration: none;
   transition: 0.3s;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 12px;
 }
 
 .btn:hover {
   background: white;
   color: black;
-  transform: translateY(-2px);
-}
-
-/* identity */
-
-#identity {
-  background: #080808;
-}
-
-#identity h1 {
-  font-size: 52px;
-  letter-spacing: 6px;
-}
-
-#identity p {
-  opacity: 0.5;
-  font-size: 18px;
-  letter-spacing: 3px;
-}
-
-/* warning */
-
-.warning {
-  font-size: 34px;
-  letter-spacing: 6px;
-  color: #ff3b3b;
-  text-transform: uppercase;
 }
 
 /* footer */
-
 footer {
   padding: 40px;
   text-align: center;
@@ -301,178 +213,53 @@ footer {
 
 <div class="cursor" id="cursor"></div>
 
-<!-- nav -->
-
 <nav>
   <a href="#home">home</a>
   <a href="#bio">bio</a>
   <a href="#music">music</a>
   <a href="#artists">artists</a>
-  <a href="#updates">updates</a>
 </nav>
 
-<!-- hero -->
-
 <div class="hero" id="home">
-
-  <div class="glitch">
-    SWC
-  </div>
-
-  <div class="subtitle">
-    skater / alt / underground collective
-  </div>
-
+  <div class="glitch">SWC</div>
+  <div class="subtitle">skater / alt / underground collective</div>
 </div>
 
-<!-- identity -->
-
-<section id="identity">
-
-  <h1>SWC IS NOT A BRAND</h1>
-
-  <p>
-    it's a signal.
-  </p>
-
-</section>
-
-<!-- bio -->
-
 <section id="bio">
-
   <h1>bio</h1>
-
-  <p style="max-width:700px; margin:auto; opacity:0.75; line-height:1.8;">
-
+  <p style="max-width:700px;margin:auto;opacity:0.75;line-height:1.8;">
     SWC (Slit Wrist County / $uicide County) is an underground rap duo from South Carolina.
-
-    We’re not here to change the world — just to show a different perspective through raw sound, emotion, and energy.
-
-    Built on chaos, honesty, and underground culture, SWC represents a mindset more than a movement.
-
+    We’re not here to change the world — just to show a different perspective through raw sound and energy.
   </p>
-
 </section>
-
-<!-- music -->
 
 <section id="music">
-
   <h1>music</h1>
-
-  <p style="opacity:0.7;">
-    listen to the latest SWC playlist
-  </p>
-
-  <a
-    href="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?utm_source=generator"
-    target="_blank"
-    class="btn">
-
+  <a class="btn" href="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?utm_source=generator" target="_blank">
     open spotify
-
   </a>
-
 </section>
 
-<!-- artists -->
-
 <section id="artists">
-
   <h1>SWC / DUST</h1>
 
   <div class="merch-grid">
-
-    <div class="item">
-      <img src="IMG_5298.jpg">
-      <p>SWC</p>
-    </div>
-
-    <div class="item">
-      <img src="Snapchat-1671366225.jpg">
-      <p>dust</p>
-    </div>
-
-    <div class="item">
-      <img src="Snapchat-1122645476.jpg">
-      <p>swc archive</p>
-    </div>
-
-    <div class="item">
-      <img src="dust.jpg">
-      <p>dust (alt)</p>
-    </div>
-
+    <div class="item"><img src="IMG_5298.jpg"><p>SWC</p></div>
+    <div class="item"><img src="Snapchat-1671366225.jpg"><p>dust</p></div>
+    <div class="item"><img src="Snapchat-1122645476.jpg"><p>archive</p></div>
   </div>
-
 </section>
-
-<!-- shows -->
-
-<section id="shows">
-
-  <h1>shows</h1>
-
-  <p style="opacity:0.6;">
-    no shows currently announced — check back soon.
-  </p>
-
-</section>
-
-<!-- updates -->
-
-<section id="updates">
-
-  <h1 class="warning">
-    merch unavailable
-  </h1>
-
-  <p style="opacity:0.7; max-width:600px; margin:auto;">
-
-    merch is currently unavailable.
-
-    follow SWC below for future drops, releases, and updates.
-
-  </p>
-
-  <div class="socials">
-
-    <a href="https://www.instagram.com/darkscumblackband/" target="_blank" class="btn">
-      instagram
-    </a>
-
-    <a href="https://www.tiktok.com/@kodakdarkscum/photo/7609437753721359629" target="_blank" class="btn">
-      tiktok
-    </a>
-
-    <a href="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?si=650d6f19d224441f" target="_blank" class="btn">
-      spotify
-    </a>
-
-  </div>
-
-</section>
-
-<!-- footer -->
 
 <footer>
   SWC © underground label
 </footer>
 
-<!-- cursor script -->
-
 <script>
-
 const cursor = document.getElementById("cursor");
-
 document.addEventListener("mousemove", e => {
-
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY + "px";
-
 });
-
 </script>
 
 </body>
