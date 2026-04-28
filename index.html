@@ -22,58 +22,54 @@ body {
   overflow-x: hidden;
 }
 
-/* HARD LIGHTING LAYERS */
+/* MAIN BACKGROUND */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
 
   background:
-    /* harsh red cut */
-    linear-gradient(120deg,
-      rgba(255,0,0,0.18) 0%,
-      transparent 35%
-    ),
-
-    /* cold blue edge */
-    linear-gradient(-40deg,
-      rgba(0,140,255,0.12) 0%,
-      transparent 40%
-    ),
-
-    /* broken spotlight */
-    radial-gradient(circle at 50% 30%,
-      rgba(255,255,255,0.05),
-      transparent 60%
-    ),
-
-    /* deep black structure */
+    /* deep black base */
     linear-gradient(180deg, #000, #020202, #000);
 
-  opacity: 1;
+  z-index: -3;
   pointer-events: none;
-  z-index: -2;
 }
 
-/* NOISE THAT ACTUALLY SHOWS */
+/* CRACK + RED BLEED */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
 
   background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0.03) 0px,
-      rgba(255,255,255,0.03) 1px,
-      transparent 1px,
-      transparent 4px
+    /* jagged crack line */
+    linear-gradient(115deg,
+      transparent 0%,
+      transparent 48%,
+      rgba(255,255,255,0.06) 49%,
+      rgba(255,255,255,0.02) 50%,
+      rgba(255,255,255,0.06) 51%,
+      transparent 52%,
+      transparent 100%
+    ),
+
+    /* red seep around crack */
+    radial-gradient(circle at 52% 50%,
+      rgba(255, 0, 40, 0.18),
+      transparent 45%
+    ),
+
+    radial-gradient(circle at 48% 50%,
+      rgba(255, 0, 0, 0.10),
+      transparent 55%
     );
 
-  opacity: 0.12;
+  opacity: 1;
+  z-index: -2;
   pointer-events: none;
-  z-index: -1;
-  mix-blend-mode: overlay;
+
+  mix-blend-mode: screen;
 }
 /* cursor */
 
