@@ -35,14 +35,13 @@ body::before {
   z-index: -3;
 }
 
-/* CRACK LAYER */
+/* crack layer */
 body::after {
   content: "";
   position: fixed;
   inset: -20px;
 
   background:
-    /* crack line */
     linear-gradient(115deg,
       transparent 0%,
       transparent 47%,
@@ -52,7 +51,6 @@ body::after {
       transparent 54%
     ),
 
-    /* red bleed */
     radial-gradient(circle at 52% 50%,
       rgba(255, 0, 40, 0.35),
       transparent 55%
@@ -66,20 +64,20 @@ body::after {
   filter: blur(0.25px);
 }
 
-/* idle breathing */
+/* idle movement */
 @keyframes crackIdle {
   0%   { transform: translateX(0px) skewX(0deg) scaleY(1); }
   50%  { transform: translateX(1px) skewX(0.4deg) scaleY(1.005); }
   100% { transform: translateX(0px) skewX(0deg) scaleY(1); }
 }
 
-/* ACTIVE CRACK STATE */
+/* ACTIVE crack reaction */
 body.crack-active::after {
   animation: crackReact 1.1s infinite;
   filter: blur(0.45px) contrast(1.4);
 }
 
-/* violent reaction */
+/* violent movement */
 @keyframes crackReact {
   0%   { transform: translateX(0px) skewX(0deg) scaleY(1); }
   20%  { transform: translateX(-6px) skewX(-1.5deg) scaleY(1.02); }
@@ -143,7 +141,7 @@ nav a:hover {
   animation: glitchFlicker 3.2s infinite;
 }
 
-/* faster irregular flicker */
+/* flicker */
 @keyframes glitchFlicker {
   0% { opacity: 1; }
   8% { opacity: 0.6; }
@@ -200,7 +198,7 @@ section {
   opacity: 0.8;
 }
 
-/* button */
+/* buttons */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -214,6 +212,23 @@ section {
 .btn:hover {
   background: white;
   color: black;
+}
+
+/* socials */
+.socials {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* warning */
+.warning {
+  font-size: 34px;
+  letter-spacing: 6px;
+  color: #ff3b3b;
+  text-transform: uppercase;
 }
 
 /* footer */
@@ -236,21 +251,25 @@ footer {
   <a href="#bio">bio</a>
   <a href="#music">music</a>
   <a href="#artists">artists</a>
+  <a href="#updates">updates</a>
 </nav>
 
+<!-- HERO -->
 <div class="hero" id="home">
   <div class="glitch">SWC</div>
   <div class="subtitle">skater / alt / underground collective</div>
 </div>
 
+<!-- BIO -->
 <section id="bio">
   <h1>bio</h1>
   <p style="max-width:700px;margin:auto;opacity:0.75;line-height:1.8;">
     SWC (Slit Wrist County / $uicide County) is an underground rap duo from South Carolina.
-    We’re not here to change the world — just energy, emotion, and raw sound.
+    Built on chaos, emotion, and raw sound.
   </p>
 </section>
 
+<!-- MUSIC -->
 <section id="music">
   <h1>music</h1>
   <a class="btn" href="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?utm_source=generator" target="_blank">
@@ -258,6 +277,7 @@ footer {
   </a>
 </section>
 
+<!-- ARTISTS -->
 <section id="artists">
   <h1>SWC / DUST</h1>
 
@@ -266,6 +286,25 @@ footer {
     <div class="item"><img src="Snapchat-1671366225.jpg"><p>dust</p></div>
     <div class="item"><img src="Snapchat-1122645476.jpg"><p>archive</p></div>
   </div>
+</section>
+
+<!-- UPDATES -->
+<section id="updates">
+
+  <h1 class="warning">merch unavailable</h1>
+
+  <p style="opacity:0.7; max-width:600px; margin:auto; line-height:1.6;">
+    merch is currently unavailable. follow SWC for drops and updates.
+  </p>
+
+  <div class="socials">
+
+    <a class="btn" href="https://www.instagram.com/darkscumblackband/" target="_blank">instagram</a>
+    <a class="btn" href="https://www.tiktok.com/@kodakdarkscum/photo/7609437753721359629" target="_blank">tiktok</a>
+    <a class="btn" href="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?si=650d6f19d224441f" target="_blank">spotify</a>
+
+  </div>
+
 </section>
 
 <footer>
