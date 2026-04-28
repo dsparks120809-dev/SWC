@@ -15,42 +15,66 @@ html {
 
 body {
   margin: 0;
-  background: #020202;
+  background: #000;
   color: white;
   font-family: Arial, sans-serif;
   cursor: none;
   overflow-x: hidden;
 }
 
-/* layered depth background */
+/* HARD LIGHTING LAYERS */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
 
   background:
-    radial-gradient(circle at 15% 20%, rgba(120, 0, 255, 0.08), transparent 40%),
-    radial-gradient(circle at 85% 30%, rgba(0, 200, 255, 0.06), transparent 45%),
-    radial-gradient(circle at 50% 90%, rgba(255, 0, 80, 0.05), transparent 50%),
-    radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 60%);
+    /* harsh red cut */
+    linear-gradient(120deg,
+      rgba(255,0,0,0.18) 0%,
+      transparent 35%
+    ),
 
-  filter: blur(40px);
-  opacity: 0.9;
+    /* cold blue edge */
+    linear-gradient(-40deg,
+      rgba(0,140,255,0.12) 0%,
+      transparent 40%
+    ),
+
+    /* broken spotlight */
+    radial-gradient(circle at 50% 30%,
+      rgba(255,255,255,0.05),
+      transparent 60%
+    ),
+
+    /* deep black structure */
+    linear-gradient(180deg, #000, #020202, #000);
+
+  opacity: 1;
   pointer-events: none;
-  z-index: -1;
+  z-index: -2;
 }
 
-/* subtle grain layer on top */
+/* NOISE THAT ACTUALLY SHOWS */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.08;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+
+  opacity: 0.12;
   pointer-events: none;
   z-index: -1;
+  mix-blend-mode: overlay;
 }
-
 /* cursor */
 
 .cursor {
