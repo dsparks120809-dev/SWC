@@ -13,30 +13,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  background: #000;
-  color: white;
-  font-family: Arial, sans-serif;
-  cursor: none;
-  overflow-x: hidden;
-}
-
-/* MAIN BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-
-  background:
-    /* deep black base */
-    linear-gradient(180deg, #000, #020202, #000);
-
-  z-index: -3;
-  pointer-events: none;
-}
-
-/* CRACK + RED BLEED */
 body::after {
   content: "";
   position: fixed;
@@ -54,7 +30,7 @@ body::after {
       transparent 100%
     ),
 
-    /* red seep around crack */
+    /* red seep */
     radial-gradient(circle at 52% 50%,
       rgba(255, 0, 40, 0.18),
       transparent 45%
@@ -66,11 +42,37 @@ body::after {
     );
 
   opacity: 1;
-  z-index: -2;
   pointer-events: none;
+  z-index: -2;
 
   mix-blend-mode: screen;
+
+  /* 👇 breathing animation */
+  animation: crackBreathe 6.5s ease-in-out infinite;
 }
+
+/* breathing motion (subtle expand/shift) */
+@keyframes crackBreathe {
+  0% {
+    transform: scaleX(1) scaleY(1);
+    filter: blur(0px);
+  }
+
+  35% {
+    transform: scaleX(1.01) scaleY(1);
+    filter: blur(0.3px);
+  }
+
+  55% {
+    transform: scaleX(0.99) scaleY(1);
+    filter: blur(0.1px);
+  }
+
+  100% {
+    transform: scaleX(1) scaleY(1);
+    filter: blur(0px);
+  }
+  
 /* cursor */
 
 .cursor {
