@@ -1,33 +1,153 @@
+<!-- ADD THIS INSIDE YOUR <style> TAG (replace your current body style with this upgraded version) -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SWC</title>
-
-<style>
 body {
   margin: 0;
-  background: #0b0b0b;
+  background: #050505;
   color: white;
   font-family: Arial, sans-serif;
   cursor: none;
+  overflow-x: hidden;
 }
 
-/* cursor */
-.cursor {
-  width: 10px;
-  height: 10px;
-  border: 1px solid white;
-  border-radius: 50%;
+/* atmosphere overlay */
+body::before {
+  content: "";
   position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 40%),
+    radial-gradient(circle at bottom, rgba(255,255,255,0.03), transparent 40%);
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: -1;
 }
 
-/* nav */
+/* smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* glitch logo */
+.glitch {
+  font-size: 110px;
+  font-weight: bold;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  position: relative;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 0.9; }
+  50% { opacity: 0.3; }
+  52% { opacity: 1; }
+}
+
+/* hero improvements */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.subtitle {
+  opacity: 0.6;
+  margin-top: 15px;
+  letter-spacing: 3px;
+  text-transform: lowercase;
+}
+
+/* sections animate in */
+section {
+  padding: 140px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* cards */
+.item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #222;
+  overflow: hidden;
+  transition: 0.3s;
+  backdrop-filter: blur(6px);
+}
+
+.item:hover {
+  transform: scale(1.03);
+  border-color: white;
+}
+
+/* buttons */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 28px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+/* warning text */
+.warning {
+  font-size: 34px;
+  letter-spacing: 6px;
+  color: #ff3b3b;
+  text-transform: uppercase;
+}
+
+/* identity section */
+#identity {
+  background: #080808;
+}
+
+#identity h1 {
+  font-size: 52px;
+  letter-spacing: 6px;
+}
+
+#identity p {
+  opacity: 0.5;
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+/* artist images */
+#artists img {
+  height: 320px;
+  width: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) grayscale(0.2);
+}
+
+/* nav glow */
 nav {
   position: fixed;
   width: 100%;
@@ -36,230 +156,56 @@ nav {
   justify-content: center;
   gap: 25px;
   padding: 15px;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  z-index: 999;
 }
 
 nav a {
   color: white;
   text-decoration: none;
   opacity: 0.6;
-}
-nav a:hover { opacity: 1; }
-
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  transition: 0.3s;
 }
 
-.logo {
-  font-size: 80px;
-  letter-spacing: 10px;
-  font-weight: bold;
+nav a:hover {
+  opacity: 1;
+  text-shadow: 0 0 10px white;
 }
 
-.subtitle {
-  opacity: 0.6;
-  margin-top: 10px;
-}
 
-/* sections */
-section {
-  padding: 100px 20px;
-  text-align: center;
-}
 
-/* merch grid */
-.merch-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: auto;
-}
+<!-- NOW REPLACE YOUR HERO SECTION WITH THIS -->
 
-.item {
-  background: #111;
-  border: 1px solid #222;
-  overflow: hidden;
-  transition: 0.2s;
-}
-
-.item:hover {
-  transform: scale(1.05);
-  border-color: white;
-}
-
-.item img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.item p {
-  margin: 10px;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* spotify */
-iframe {
-  margin-top: 20px;
-  width: 80%;
-}
-
-/* footer */
-footer {
-  padding: 40px;
-  text-align: center;
-  opacity: 0.4;
-  font-size: 12px;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  border: 1px solid white;
-  color: white;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  background: white;
-  color: black;
-}
-
-#artists img {
-  height: 280px;
-  width: 100%;
-  object-fit: cover;
-  filter: contrast(1.1) grayscale(0.2);
-}
-</style>
-</head>
-
-<body>
-
-<div class="cursor" id="cursor"></div>
-
-<nav>
-  <a href="#home">home</a>
-  <a href="#music">music</a>
-  <a href="#merch">merch</a>
-</nav>
-
-<!-- HERO -->
 <div class="hero" id="home">
-  <div class="logo">SWC</div>
-  <div class="subtitle">skater / alt / underground collective</div>
+  <div class="glitch">SWC</div>
+
+  <div class="subtitle">
+    skater / alt / underground collective
+  </div>
 </div>
 
-<!-- BIO -->
-<section id="bio">
-  <h1>bio</h1>
-  <p style="max-width:600px; margin:auto; opacity:0.75; line-height:1.6;">
-    SWC (Slit Wrist County / $uicide County) is an underground rap duo from South Carolina. 
-    We’re not here to change the world — just to show a different perspective through raw sound, emotion, and energy. 
-    Built on chaos, honesty, and underground culture, SWC represents a mindset more than a movement.
-  </p>
-</section>
 
-<!-- MUSIC -->
-<section id="music">
-  <h1>music</h1>
-  <p>listen to the latest SWC playlist</p>
 
-  <a 
-    href="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?utm_source=generator" 
-    target="_blank" 
-    class="btn">
-    open spotify
-  </a>
-</section>
+<!-- ADD THIS SECTION UNDER YOUR HERO SECTION -->
 
-<!-- ARTISTS -->
-<section id="artists">
-  <h1>SWC / DUST</h1>
+<section id="identity">
 
-  <div class="merch-grid">
+  <h1>SWC IS NOT A BRAND</h1>
 
-    <div class="item">
-      <img src="IMG_5298.jpg">
-      <p>SWC</p>
-    </div>
-
-    <div class="item">
-      <img src="Snapchat-1671366225.jpg">
-      <p>dust</p>
-    </div>
-
-    <div class="item">
-      <img src="Snapchat-1122645476.jpg">
-      <p>swc archive</p>
-    </div>
-
-    <div class="item">
-      <img src="dust.jpg">
-      <p>dust (alt)</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- SHOWS -->
-<section id="shows">
-  <h1>shows</h1>
-
-  <p style="opacity:0.6;">
-    no shows currently announced — check back soon or follow SWC for updates.
+  <p>
+    it's a signal.
   </p>
 
-  <div class="merch-grid">
-    <div class="item">
-      <p>coming soon</p>
-    </div>
-  </div>
 </section>
 
-<!-- UPDATES -->
-<section id="updates">
 
-  <h1 class="glitch">MERCH NOT AVAILABLE</h1>
 
-  <p style="opacity:0.7; max-width:600px; margin:auto;">
-    merch is currently not available. follow SWC below to stay updated on drops, new music, and future releases.
-  </p>
+<!-- REPLACE THIS -->
 
-  <div class="socials">
+<h1 class="glitch">MERCH NOT AVAILABLE</h1>
 
-    <a href="https://www.instagram.com/darkscumblackband/" target="_blank" class="btn">instagram</a>
+<!-- WITH THIS -->
 
-    <a href="https://www.tiktok.com/@kodakdarkscum/photo/7609437753721359629" target="_blank" class="btn">tiktok</a>
-
-    <a href="https://open.spotify.com/playlist/3cJjwUeCZMdAX3NVvSQqzN?si=650d6f19d224441f" target="_blank" class="btn">spotify</a>
-
-  </div>
-
-</section>
-
-<footer>
-  SWC © underground label
-</footer>
-
-<script>
-const cursor = document.getElementById("cursor");
-document.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
-</script>
-
-</body>
-</html>
+<h1 class="warning">MERCH UNAVAILABLE</h1>
